@@ -1,13 +1,14 @@
 import resource from 'resource-router-middleware';
 import Facet from '../models/facet';
 
+/**
+ * Check out https://github.com/developit/resource-router-middleware
+ * for further documentation of the code 
+ */
+
 export default () => resource({
-	/** Property name to store preloaded entity on `request`. */
 	id: 'facet',
 
-	/** For requests with an `id`, you can auto-load the entity.
-	 *  Errors terminate the request, success sets `req[id] = data`.
-	 */
 	load(req, id, callback) {
 		Facet.findById(id, (error, facet) => {
 			if (error) callback(error);
@@ -15,14 +16,14 @@ export default () => resource({
 		})
 	},
 
-	/** GET / - List all entities */
+	// GET all
 	index({ params }, res) {
 		Facet.find({}, (error, facets) => {
 			res.json(facets);
 		})
 	},
 
-	/** POST / - Create a new entity */
+	// POST
 	create({ body }, res) {
 		const facet = new Facet(body);
 		facet.save((error) => {
@@ -31,12 +32,12 @@ export default () => resource({
 		})
 	},
 
-	/** GET /:id - Return a given entity */
+	// GET :id 
 	read({ facet }, res) {
 		res.json(facet);
 	},
 
-	/** PUT /:id - Update a given entity */
+	// PUT :id
 	update({ facet, body }, res) {
 		const fields = Object.keys(body);
 
@@ -50,7 +51,7 @@ export default () => resource({
 		});
 	},
 
-	/** DELETE /:id - Delete a given entity */
+	// DELETE :id
 	delete({ facet }, res) {
 		facet.remove((error) => {
 			if (error) res.status(204).send("Deleted");
