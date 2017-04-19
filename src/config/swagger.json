@@ -1,0 +1,364 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Express REST API",
+    "description": "NodeJS REST API boilerplate using Express and Mongodb",
+    "version": "0.0.0"
+  },
+  "basePath": "",
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/auth/signup": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Register new account with email and password",
+        "description": "",
+        "operationId": "signUp",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Account information with email and password provided",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SignUpRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/TokenResponse"
+            }
+          }
+        }
+      }
+    },
+    "/auth/signin": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Sign in a user based on email and password provided",
+        "description": "",
+        "operationId": "signIn",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Email and password",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SigInRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/TokenResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/401Response"
+            }
+          }
+        }
+      }
+    },
+    "/api/facets": {
+      "get": {
+        "tags": [
+          "Facets"
+        ],
+        "summary": "Get all facets",
+        "description": "",
+        "operationId": "getAllFacets",
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "JWT token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/401Response"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Facets"
+        ],
+        "summary": "Post a new facet data",
+        "description": "",
+        "operationId": "addFacet",
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "JWT token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Facet data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FacetRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/401Response"
+            }
+          }
+        }
+      }
+    },
+    "/api/facets/{facetId}": {
+      "get": {
+        "tags": [
+          "Facets"
+        ],
+        "summary": "Get facet by id",
+        "description": "",
+        "operationId": "getFacet",
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "JWT token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "Facet Id",
+            "description": "Facet Id from db",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/401Response"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Facets"
+        ],
+        "summary": "Update facet data",
+        "description": "",
+        "operationId": "updateFacet",
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "JWT token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "Facet Id",
+            "description": "Facet Id from db",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/401Response"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Facets"
+        ],
+        "summary": "Delete facet data",
+        "description": "",
+        "operationId": "deleteFacet",
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "JWT token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "Facet Id",
+            "description": "Facet Id from db",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/401Response"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Facet": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "SignIn"
+      }
+    },
+    "SigInRequest": {
+      "type": "object",
+      "required": [
+        "email",
+        "password"
+      ],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "SignIn"
+      }
+    },
+    "SignUpRequest": {
+      "type": "object",
+      "required": [
+        "email",
+        "password"
+      ],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "SignUp"
+      }
+    },
+    "TokenResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "description": "JWT token",
+          "type": "string"
+        }
+      }
+    },
+    "401Response": {
+      "type": "string",
+      "default": "Unauthorized"
+    }
+  }
+}

@@ -9,6 +9,9 @@ import middleware from './middleware';
 import api from './api';
 import apiConfig from './config/api';
 
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './config/swagger.json';
+
 let app = express();
 app.server = http.createServer(app);
 
@@ -26,6 +29,9 @@ app.use(bodyParser.json({
 app.use(morgan('combined'));
 
 initializeDb(() => {
+	// api explorer
+	app.use('/explorer', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 	// internal middleware
 	app.use(middleware());
 
