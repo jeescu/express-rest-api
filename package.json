@@ -1,5 +1,5 @@
 {
-  "name": "express-es6-rest-api",
+  "name": "express-rest-api",
   "version": "0.3.0",
   "description": "Starter project for an ES6 RESTful Express API",
   "main": "dist",
@@ -10,28 +10,24 @@
     "prestart": "npm run -s build",
     "test": "eslint src"
   },
-  "eslintConfig": {
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 7,
-      "sourceType": "module"
-    },
-    "env": {
-      "node": true
-    },
-    "rules": {
-      "no-console": 0,
-      "no-unused-vars": 1
-    }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeescu/express-rest-api.git"
   },
-  "repository": "developit/express-es6-rest-api",
-  "author": "Jason Miller <jason@developit.ca>",
+  "author": "John Edward <johnedwardescuyos@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",
     "cors": "^2.7.1",
     "express": "^4.13.3",
+    "jwt-simple": "^0.5.1",
+    "mongoose": "^4.9.5",
+    "morgan": "^1.8.1",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1",
+    "passport-local": "^1.0.0",
     "resource-router-middleware": "^0.5.1"
   },
   "devDependencies": {
@@ -41,5 +37,9 @@
     "babel-preset-stage-0": "^6.5.0",
     "eslint": "^3.1.1",
     "nodemon": "^1.9.2"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/jeescu/express-rest-api/issues"
+  },
+  "homepage": "https://github.com/jeescu/express-rest-api#readme"
 }

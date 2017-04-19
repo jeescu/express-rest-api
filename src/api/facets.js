@@ -1,30 +1,34 @@
 import resource from 'resource-router-middleware';
-import facets from '../models/facets';
+import Facet from '../models/facet';
 
-export default ({ config, db }) => resource({
-
+export default () => resource({
 	/** Property name to store preloaded entity on `request`. */
-	id : 'facet',
+	id: 'facet',
 
 	/** For requests with an `id`, you can auto-load the entity.
 	 *  Errors terminate the request, success sets `req[id] = data`.
 	 */
 	load(req, id, callback) {
-		let facet = facets.find( facet => facet.id===id ),
-			err = facet ? null : 'Not found';
-		callback(err, facet);
+		Facet.findById(id, (error, facet) => {
+			if (error) callback(error);
+			if (facet) callback(null, facet);
+		})
 	},
 
 	/** GET / - List all entities */
 	index({ params }, res) {
-		res.json(facets);
+		Facet.find({}, (error, facets) => {
+			res.json(facets);
+		})
 	},
 
 	/** POST / - Create a new entity */
 	create({ body }, res) {
-		body.id = facets.length.toString(36);
-		facets.push(body);
-		res.json(body);
+		const facet = new Facet(body);
+		facet.save((error) => {
+			if (error) res.status(422).send("Invalid data");
+			res.json(facet);
+		})
 	},
 
 	/** GET /:id - Return a given entity */
@@ -34,17 +38,23 @@ export default ({ config, db }) => resource({
 
 	/** PUT /:id - Update a given entity */
 	update({ facet, body }, res) {
-		for (let key in body) {
-			if (key!=='id') {
-				facet[key] = body[key];
-			}
-		}
-		res.sendStatus(204);
+		const fields = Object.keys(body);
+
+		fields.forEach((field) => {
+			facet[fields] = body[field]
+		});
+
+		facet.save((error, updatedFacet) => {
+			if (error) res.status(422).send(error);
+			res.send(updatedFacet);
+		});
 	},
 
 	/** DELETE /:id - Delete a given entity */
 	delete({ facet }, res) {
-		facets.splice(facets.indexOf(facet), 1);
-		res.sendStatus(204);
+		facet.remove((error) => {
+			if (error) res.status(204).send("Deleted");
+			res.sendStatus(204);
+		})
 	}
 });

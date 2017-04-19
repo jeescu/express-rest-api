@@ -1,9 +1,13 @@
 import { Router } from 'express';
+import auth from './authentication';
+import { requireAuth } from './passport';
 
-export default ({ config, db }) => {
-	let routes = Router();
+export default () => {
+	let middleware = Router();
+	// auth api for unique signIn and signUp routes
+	middleware.use('/auth', auth());
+	// authenticate any incoming requests
+	middleware.all('*', requireAuth);
 
-	// add middleware here
-
-	return routes;
+	return middleware;
 }

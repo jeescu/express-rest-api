@@ -1,0 +1,4 @@
+{
+    "url": "http://localhost:8080",
+    "mongoUrl": "mongodb://localhost/restdb"
+}
