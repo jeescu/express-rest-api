@@ -22,6 +22,7 @@
     "compression": "^1.5.2",
     "cors": "^2.7.1",
     "express": "^4.13.3",
+    "helmet": "^3.5.0",
     "jwt-simple": "^0.5.1",
     "mongoose": "^4.9.5",
     "morgan": "^1.8.1",

@@ -1,6 +1,7 @@
 import http from 'http';
 import express from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import initializeDb from './db';
@@ -15,6 +16,8 @@ app.server = http.createServer(app);
 app.use(cors({
 	exposedHeaders: apiConfig.corsHeaders
 }));
+
+app.use(helmet());
 
 app.use(bodyParser.json({
 	limit: apiConfig.bodyLimit
