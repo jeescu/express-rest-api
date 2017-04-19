@@ -1,15 +1,19 @@
 # Express REST API starter
 
-This boilerplate uses [passport](https://github.com/jaredhanson/passport) for authentication and [mongodb](https://www.mongodb.com) as the database.
+A REST API boilerplate for NodeJS that uses collections 
+of basic practices: Auth, Security, RESTful resources, API specs.
+
+> Uses MongoDB as its database, Passport for authentication with (jwt) and Swagger for api specs.
 
 ## Libraries and tools used
-- Express
+- [Express](https://expressjs.com/)
+- [Mongodb](https://www.mongodb.com)
 - ES6
 - Babel (preset 2015)
-- Passport
-- JsonWebToken
-- Mongoose
-- Swagger
+- [Passport](https://github.com/jaredhanson/passport)
+- [JsonWebToken](https://github.com/auth0/node-jsonwebtoken)
+- [Mongoose]()
+- [SwaggerUI](https://github.com/scottie1984/swagger-ui-express)
 - Morgan, Helmet, Cors
 - Mocha, Chai, Chakram
 - Docker
@@ -44,6 +48,9 @@ This boilerplate uses [passport](https://github.com/jaredhanson/passport) for au
 # Run your docker image with the tag name
 > docker run -p 8080:8080 rest-api
 ```
+
+### API documentation
+Just Checkout `localhost:8080/explorer`.
 
 ## Licence
 MIT
