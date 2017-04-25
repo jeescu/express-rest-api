@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import auth from './authentication';
+import auth from './auth';
 import { requireAuth } from './passport';
 
 export default () => {

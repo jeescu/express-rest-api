@@ -1,12 +1,13 @@
+import baseController from './baseController';
 import User from '../models/user';
 import { getTokenForUser } from '../lib/utils/userToken';
 
-class AuthenticationController {
-    static signUp(req, res, next) {
+class AuthController extends baseController {
+    signUp(req, res, next) {
         const { email, password } = req.body;
         // controller level validation
         if (!email || !password) {
-            return res.status(422).send({ error: 'You must provide email and password' })
+            return this.responseError(res, 'You must provide email and password');
         }
 
         User.findOne({ email }, (error, data) => {
@@ -14,7 +15,7 @@ class AuthenticationController {
             // if email exists
             if (data) {
                 console.log(data);
-                return res.status(422).send({ error: 'Email is in use' });
+                return this.responseError(res, 'Email is in use');
             }
             // is user doesn't exist create new record
             const user = new User({
@@ -30,7 +31,7 @@ class AuthenticationController {
         });
     }
 
-    static signIn(req, res) {
+    signIn(req, res) {
         // User is already had their email and password authenticated
         // See local strategy authentication
         // Just respond a token
@@ -38,4 +39,4 @@ class AuthenticationController {
     }
 }
 
-export default AuthenticationController;
+export default new AuthController();
