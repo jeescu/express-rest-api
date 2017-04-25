@@ -1,9 +1,9 @@
 # Express REST API starter
 
 A REST API boilerplate for NodeJS that uses collections 
-of basic practices: Auth, Security, RESTful resources, API specs.
+of basic practices: Auth, Security, RESTful resources, API docs.
 
-> Uses MongoDB as its database, Passport for authentication with (jwt) and Swagger for api specs.
+> Uses MongoDB as its database, Passport for authentication with (jwt) and Swagger for api documentation.
 
 ## Libraries and tools used
 - [Express](https://expressjs.com/)
@@ -50,7 +50,7 @@ of basic practices: Auth, Security, RESTful resources, API specs.
 ```
 
 ### API documentation
-Just Checkout `localhost:8080/explorer`.
+Checkout `localhost:8080/docs`.
 
 ## Licence
 MIT

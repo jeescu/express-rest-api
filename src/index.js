@@ -30,7 +30,7 @@ app.use(morgan('combined'));
 
 initializeDb(() => {
 	// api explorer
-	app.use('/explorer', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+	app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 	// internal middleware
 	app.use(middleware());
