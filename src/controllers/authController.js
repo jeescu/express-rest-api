@@ -1,8 +1,8 @@
-import baseController from './baseController';
+import BaseController from './baseController';
 import User from '../models/user';
 import { getTokenForUser } from '../lib/utils/userToken';
 
-class AuthController extends baseController {
+class AuthController extends BaseController {
     signUp(req, res, next) {
         const { email, password } = req.body;
         // controller level validation

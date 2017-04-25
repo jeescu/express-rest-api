@@ -9,7 +9,7 @@ export default () => {
 	let api = Router();
 
 	// facets resource
-	api.use('/facets', facets());
+	api.use('/facets', facets.getResource());
 
 	// No resource. Show API metadata at the root
 	api.get('/', (req, res) => {
