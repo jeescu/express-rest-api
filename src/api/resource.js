@@ -10,8 +10,9 @@ import { formatResponseError, formatResponseSuccess } from '../lib/utils/respons
  * 
  */
 export default class APIResource {
-    constructor(Id, Model) {
-        this.id = Id;
+    constructor(resourceId, Model) {
+        this.id = resourceId;
+
         this.load = function (req, id, callback) {
             Model.findById(id, (error, obj) => {
                 if (error) callback(error);
@@ -36,26 +37,30 @@ export default class APIResource {
         }
 
         // GET :id 
-        this.read = function ({ obj }, res) {
+        this.read = function ({[resourceId]: obj }, res) {
             formatResponseSuccess(res, obj);
         }
 
         // PUT :id
-        this.update = function ({ obj, body }, res) {
-            const fields = Object.keys(body);
-
-            fields.forEach((field) => {
-                obj[fields] = body[field]
-            });
-
+        this.update = function ({[resourceId]: obj, body }, res) {
+            obj.set(body);
             obj.save((error, updatedObj) => {
                 if (error) formatResponseError(res, error);
                 formatResponseSuccess(res, updatedObj);
             });
         }
 
+        // PATCH :id
+        this.patch = function ({[resourceId]: obj, body }, res) {
+            obj.set(body)
+            obj.save((error, obj) => {
+                if (error) formatResponseError(res, error);
+                formatResponseSuccess(res, obj);
+            });
+        }
+
         // DELETE :id
-        this.delete = function ({ obj }, res) {
+        this.delete = function ({[resourceId]: obj }, res) {
             obj.remove((error) => {
                 if (error) formatResponseError(res, error);
                 res.sendStatus(204);
