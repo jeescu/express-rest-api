@@ -23,14 +23,14 @@
     "cors": "^2.7.1",
     "express": "^4.13.3",
     "helmet": "^3.5.0",
-    "jwt-simple": "^0.5.1",
+    "jsonwebtoken": "^7.4.0",
     "mongoose": "^4.9.5",
     "morgan": "^1.8.1",
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1",
     "passport-local": "^1.0.0",
     "resource-router-middleware": "^0.5.1",
-    "swagger-ui-express": "^1.0.7"    
+    "swagger-ui-express": "^1.0.7"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",

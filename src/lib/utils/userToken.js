@@ -1,4 +1,4 @@
-import jwt from 'jwt-simple';
+import jwt from 'jsonwebtoken';
 import apiConfig from '../../config/api';
 
  /**
@@ -12,5 +12,5 @@ import apiConfig from '../../config/api';
 
 export const getTokenForUser = (user) => {
     const timestamp = +new Date();
-    return jwt.encode({ sub: user._id, iat: timestamp }, apiConfig.secretKey);
+    return jwt.sign({ sub: user._id, iat: timestamp }, apiConfig.secretKey);
 }
