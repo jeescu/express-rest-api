@@ -20,7 +20,7 @@ export default class APIResource {
         }
 
         // GET all
-        this.index = function ({ params }, res) {
+        this.list = function ({ params }, res) {
             Model.find({}, (error, obj) => {
                 formatResponseSuccess(res, obj)
             })
