@@ -54,6 +54,7 @@ of basic practices: Auth, Security, RESTful resources, API docs.
 
 ### API documentation
 Checkout `localhost:8080/docs`.
+
 When using [Apiary](https://apiary.io/), create new project api using swagger and
 copy `swagger.json` content to the editor and publish it. See [example](http://docs.expressrestapi.apiary.io).
 
