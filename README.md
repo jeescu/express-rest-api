@@ -1,7 +1,7 @@
 # Express REST API starter
-[![Build Status](https://travis-ci.org/jeescu/express-rest-api.svg?branch=master)](https://travis-ci.org/jeescu/express-rest-api)
-[![bitHound Dependencies](https://www.bithound.io/github/jeescu/express-rest-api/badges/dependencies.svg)](https://www.bithound.io/github/jeescu/express-rest-api/master/dependencies/npm)
-[![bitHound Dev Dependencies](https://www.bithound.io/github/jeescu/express-rest-api/badges/devDependencies.svg)](https://www.bithound.io/github/jeescu/express-rest-api/master/dependencies/npm)
+[![Build Status](https://travis-ci.org/jeescu/express-rest-api.svg?style=flat-square)](https://travis-ci.org/jeescu/express-rest-api)
+[![bitHound Dependencies](https://www.bithound.io/github/jeescu/express-rest-api/badges/dependencies.svg?style=flat-square)](https://www.bithound.io/github/jeescu/express-rest-api/master/dependencies/npm)
+[![bitHound Dev Dependencies](https://www.bithound.io/github/jeescu/express-rest-api/badges/devDependencies.svg?style=flat-square)](https://www.bithound.io/github/jeescu/express-rest-api/master/dependencies/npm)
 
 A REST API boilerplate for NodeJS that uses collections 
 of basic practices: Auth, Security, RESTful resources, API docs.
@@ -54,6 +54,8 @@ of basic practices: Auth, Security, RESTful resources, API docs.
 
 ### API documentation
 Checkout `localhost:8080/docs`.
+When using [Apiary](https://apiary.io/), create new project api using swagger and
+copy `swagger.json` content to the editor and publish it.
 
 ## Licence
 MIT
