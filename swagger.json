@@ -125,7 +125,7 @@
         "tags": [
           "Facets"
         ],
-        "summary": "Post a new facet data",
+        "summary": "Create a new facet",
         "description": "",
         "operationId": "addFacet",
         "consumes": [],
@@ -171,7 +171,7 @@
         "tags": [
           "Facets"
         ],
-        "summary": "Get facet by id",
+        "summary": "Get facet",
         "description": "",
         "operationId": "getFacet",
         "consumes": [],
@@ -213,7 +213,7 @@
         "tags": [
           "Facets"
         ],
-        "summary": "Update facet data",
+        "summary": "Update facet",
         "description": "",
         "operationId": "updateFacet",
         "consumes": [],
@@ -255,7 +255,7 @@
         "tags": [
           "Facets"
         ],
-        "summary": "Delete facet data",
+        "summary": "Delete facet",
         "description": "",
         "operationId": "deleteFacet",
         "consumes": [],
@@ -296,7 +296,7 @@
     }
   },
   "definitions": {
-    "Facet": {
+    "FacetRequest": {
       "type": "object",
       "required": [
         "name"
