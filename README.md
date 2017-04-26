@@ -4,9 +4,9 @@
 [![bitHound Dev Dependencies](https://www.bithound.io/github/jeescu/express-rest-api/badges/devDependencies.svg?style=flat-square)](https://www.bithound.io/github/jeescu/express-rest-api/master/dependencies/npm)
 
 A REST API boilerplate for NodeJS that uses collections 
-of basic practices: Auth, Security, RESTful resources, API docs.
+of basic practices: Auth, Security, RESTful resources, API docs and Testing.
 
-> Uses MongoDB as its database, Passport for authentication with (jwt) and Swagger for api documentation.
+> Uses MongoDB as its database and Passport for authentication with (jwt).
 
 ## Libraries and tools used
 - [Express](https://expressjs.com/)
