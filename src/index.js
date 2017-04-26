@@ -10,7 +10,7 @@ import api from './api';
 import apiConfig from './config/api';
 
 import swaggerUi from 'swagger-ui-express';
-import swaggerDocument from './config/swagger.json';
+import swaggerDocument from '../swagger.json';
 
 let app = express();
 app.server = http.createServer(app);

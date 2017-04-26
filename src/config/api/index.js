@@ -1,10 +1,12 @@
 import api from './api.json';
 
 // API environment variables settings
-const ENV_SECRET_KEY = process.env.SECRET_KEY;
-const ENV_PORT = process.env.PORT;
+const {
+    SECRET_KEY,
+    PORT
+} = process.env;
 
-api.secretKey = ENV_SECRET_KEY || api.secretKey;
-api.port = ENV_PORT || api.port;
+api.secretKey = SECRET_KEY || api.secretKey;
+api.port = PORT || api.port;
 
 export default api;
