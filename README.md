@@ -18,7 +18,7 @@ of basic practices: Auth, Security, RESTful resources, API docs.
 - [Mongoose]()
 - [SwaggerUI](https://github.com/scottie1984/swagger-ui-express)
 - [Morgan](https://github.com/expressjs/morgan), [Helmet](https://github.com/helmetjs/helmet), [Cors](https://github.com/expressjs/cors)
-- Mocha, Chai, Chakram
+- [Mocha](https://mochajs.org/#getting-started), [Chai](http://chaijs.com/api/), [Supertest](https://github.com/visionmedia/supertest)
 - [Docker](https://www.docker.com/)
 
 ### Getting Started
