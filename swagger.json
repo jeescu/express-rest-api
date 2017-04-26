@@ -5,7 +5,6 @@
     "description": "NodeJS REST API boilerplate using Express and Mongodb",
     "version": "0.0.0"
   },
-  "basePath": "",
   "produces": [
     "application/json"
   ],
@@ -15,7 +14,7 @@
         "tags": [
           "Authentication"
         ],
-        "summary": "Register new account with email and password",
+        "summary": "Register new account",
         "description": "",
         "operationId": "signUp",
         "consumes": [
@@ -50,7 +49,7 @@
         "tags": [
           "Authentication"
         ],
-        "summary": "Sign in a user based on email and password provided",
+        "summary": "Sign in with email and password",
         "description": "",
         "operationId": "signIn",
         "consumes": [
@@ -189,7 +188,7 @@
           },
           {
             "in": "path",
-            "name": "Facet Id",
+            "name": "facetId",
             "description": "Facet Id from db",
             "required": true,
             "type": "string"
@@ -231,7 +230,7 @@
           },
           {
             "in": "path",
-            "name": "Facet Id",
+            "name": "facetId",
             "description": "Facet Id from db",
             "required": true,
             "type": "string"
@@ -273,7 +272,7 @@
           },
           {
             "in": "path",
-            "name": "Facet Id",
+            "name": "facetId",
             "description": "Facet Id from db",
             "required": true,
             "type": "string"
