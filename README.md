@@ -11,7 +11,6 @@ of basic practices: Auth, Security, RESTful resources, API docs and Testing.
 ## Libraries and tools used
 - [Express](https://expressjs.com/)
 - [Mongodb](https://www.mongodb.com)
-- [ES6](http://es6-features.org)
 - [Babel (preset 2015)](https://babeljs.io/docs/plugins/preset-es2015/)
 - [Passport](https://github.com/jaredhanson/passport)
 - [JsonWebToken](https://github.com/auth0/node-jsonwebtoken)
