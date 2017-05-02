@@ -21,23 +21,42 @@ of basic practices: Auth, Security, RESTful resources, API docs and Testing.
 - [Docker](https://www.docker.com/)
 
 ### Getting Started
-
+Clone this repository and install dependencies
 ```
-# Clone this repository and install dependencies
-
 > git clone git@github.com:jeescu/express-rest-api.git
 > cd express-rest-api
 
 > npm install
-
-# Run tests
-> npm test
-
-# Run development
+```
+#### Run development with nodemon
+```
 > npm run dev
+```
 
-# Build and run production mode
-> npm start
+#### Build and run for production 
+```
+> npm run start
+```
+
+#### Tests
+Unit tests:
+```
+> npm run test:specs
+```
+
+Black-box end-to-end tests:
+```
+npm run test:e2e
+```
+
+Or run both tests:
+```
+> npm test
+```
+
+#### Lint
+```
+> npm run lint
 ```
 
 ### Docker support
