@@ -8,7 +8,7 @@ describe('Authentication', () => {
                 .post('/auth/signin')
                 .send({ email: 'anonymous@mail.co', password: '123' })
                 .expect(401)
-                .end((err, res) => {
+                .end((err) => {
                     if (err) throw err;
                 });
         });
