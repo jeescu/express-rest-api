@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Express REST API",
-    "description": "NodeJS REST API boilerplate using Express and Mongodb",
+    "description": "A REST API boilerplate for NodeJS that uses collections of basic practices: Auth, Security, RESTful resources, API docs and Testing.",
     "version": "0.0.0"
   },
   "produces": [
@@ -110,7 +110,7 @@
           "200": {
             "description": "Successful operation",
             "schema": {
-              "type": "array"
+              "$ref": "#/definitions/FormattedResponseList"
             }
           },
           "401": {
@@ -154,7 +154,7 @@
           "200": {
             "description": "Successful operation",
             "schema": {
-              "type": "object"
+              "$ref": "#/definitions/FormattedResponseObject"
             }
           },
           "401": {
@@ -171,7 +171,7 @@
         "tags": [
           "Facets"
         ],
-        "summary": "Get facet",
+        "summary": "Get a facet",
         "description": "",
         "operationId": "getFacet",
         "consumes": [],
@@ -191,14 +191,15 @@
             "name": "facetId",
             "description": "Facet Id from db",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "default": "1"
           }
         ],
         "responses": {
           "200": {
             "description": "Successful operation",
             "schema": {
-              "type": "object"
+              "$ref": "#/definitions/FormattedResponseObject"
             }
           },
           "401": {
@@ -213,7 +214,7 @@
         "tags": [
           "Facets"
         ],
-        "summary": "Update facet",
+        "summary": "Update a facet",
         "description": "",
         "operationId": "updateFacet",
         "consumes": [],
@@ -233,14 +234,15 @@
             "name": "facetId",
             "description": "Facet Id from db",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "default": "1"
           }
         ],
         "responses": {
           "200": {
             "description": "Successful operation",
             "schema": {
-              "type": "object"
+              "$ref": "#/definitions/FormattedResponseObject"
             }
           },
           "401": {
@@ -255,7 +257,7 @@
         "tags": [
           "Facets"
         ],
-        "summary": "Delete facet",
+        "summary": "Delete a facet",
         "description": "",
         "operationId": "deleteFacet",
         "consumes": [],
@@ -275,14 +277,15 @@
             "name": "facetId",
             "description": "Facet Id from db",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "default": "1"
           }
         ],
         "responses": {
           "200": {
             "description": "Successful operation",
             "schema": {
-              "type": "object"
+              "$ref": "#/definitions/FormattedResponseObject"
             }
           },
           "401": {
@@ -318,10 +321,12 @@
       ],
       "properties": {
         "email": {
-          "type": "string"
+          "type": "string",
+          "default": "user@mail.com"
         },
         "password": {
-          "type": "string"
+          "type": "string",
+          "default": "abc123"
         }
       },
       "xml": {
@@ -336,10 +341,12 @@
       ],
       "properties": {
         "email": {
-          "type": "string"
+          "type": "string",
+          "default": "user@mail.com"
         },
         "password": {
-          "type": "string"
+          "type": "string",
+          "default": "abc123"
         }
       },
       "xml": {
@@ -352,6 +359,35 @@
         "token": {
           "description": "JWT token",
           "type": "string"
+        }
+      }
+    },
+    "FormattedResponseObject": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "description": "Response message",
+          "type": "string"
+        },
+        "data": {
+          "description": "Response data",
+          "type": "object"
+        }
+      }
+    },
+    "FormattedResponseList": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "description": "Response message",
+          "type": "string"
+        },
+        "data": {
+          "description": "Response data",
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
         }
       }
     },
