@@ -10,7 +10,7 @@
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
     "start": "node dist",
     "prestart": "npm run -s build",
-    "lint": "eslint src",
+    "lint": "eslint src test",
     "test:specs": "mocha --compilers js:babel-core/register --recursive 'src/**/*.spec.js'",
     "test:specs:watch": "npm run test:specs -- --watch",
     "test:e2e": "PORT=8081 mocha --compilers js:babel-core/register --recursive ./test/",
