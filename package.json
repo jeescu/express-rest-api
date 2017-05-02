@@ -15,7 +15,7 @@
     "test:specs:watch": "npm run test:specs -- --watch",
     "test:e2e": "PORT=8081 mocha --compilers js:babel-core/register --recursive ./test/",
     "test:e2e:watch": "npm run test:e2e -- --watch",
-    "test": "npm run test:specs",
+    "test": "npm-run-all --parallel test:specs test:e2e",
     "test:watch": "npm-run-all --parallel test:specs:watch test:e2e:watch"
   },
   "repository": {
@@ -47,8 +47,14 @@
     "eslint": "^3.1.1",
     "mocha": "^3.3.0",
     "nodemon": "^1.9.2",
+    "npm-run-all": "^4.0.2",
+    "pre-commit": "^1.2.2",
     "supertest": "^3.0.0"
   },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "bugs": {
     "url": "https://github.com/jeescu/express-rest-api/issues"
   },
