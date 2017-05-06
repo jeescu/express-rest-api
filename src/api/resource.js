@@ -68,7 +68,7 @@ export default class APIResource {
         }
     }
 
-    getResource() {
+    resource() {
         return resource(this);
     }
 }

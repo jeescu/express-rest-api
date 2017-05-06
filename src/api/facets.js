@@ -5,9 +5,34 @@ class FacetsApi extends APIResource {
 	constructor() {
 		// define resource id and model
 		super('facet', Facet);
-		
-		// override resource methods here
+
+		// you can override default APIResource methods here
+		// load, list, create ...
+
+		// you can also extend default resource route here
+		this.facetResource = super.resource();
+		this.extendResource();
+	}
+
+	extendResource() {
+		this.getSearch();
+	}
+	
+	// Example method for extending our resource by adding new url for search
+	getSearch() {
+		// facets/search/name
+		this.facetResource.get('/search/:keyword', (req, res) => {
+			res.send({ message: 'search' })
+		});
+	}
+
+	// then overrides super's resource() by the extended resource.
+	resource() {
+		return this.facetResource;
 	}
 }
 
-export default new FacetsApi();
+const facetApi = new FacetsApi();
+const facetApiResource = facetApi.resource();
+
+export default facetApiResource;
