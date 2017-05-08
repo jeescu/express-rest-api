@@ -36,7 +36,8 @@
     "passport-jwt": "^2.2.1",
     "passport-local": "^1.0.0",
     "resource-router-middleware": "^0.6.0",
-    "swagger-ui-express": "^1.0.7"
+    "swagger-ui-express": "^1.0.7",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",
