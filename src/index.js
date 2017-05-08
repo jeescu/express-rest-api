@@ -8,6 +8,7 @@ import initializeDb from './db';
 import middleware from './middleware';
 import api from './api';
 import apiConfig from './config/api';
+import logger from './lib/utils/logger';
 
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger.json';
@@ -38,9 +39,9 @@ initializeDb(() => {
 	// api router
 	app.use('/api', api());
 
-	app.server.listen(process.env.PORT || apiConfig.port);
+	app.server.listen(apiConfig.port);
 
-	console.log(`Started on port ${app.server.address().port}`);
+	logger.info(`Started on PORT ${app.server.address().port}...`);
 });
 
 export default app;

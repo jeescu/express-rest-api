@@ -14,7 +14,6 @@ class AuthController extends BaseController {
             if (error) { return next(error) }
             // if email exists
             if (data) {
-                console.log(data);
                 return this.responseError(res, 'Email is in use');
             }
             // is user doesn't exist create new record
