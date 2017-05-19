@@ -9,7 +9,7 @@ import { requireSignIn } from '../middleware/passport';
 const auth = () => {
 	let api = Router();
 	api.post('/signup', authController.signUp);
-    api.post('/signin', requireSignIn, authController.signIn);
+	api.post('/signin', requireSignIn, authController.signIn);
 	return api;
 }
 

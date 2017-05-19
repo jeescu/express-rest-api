@@ -3,6 +3,13 @@ import User from '../models/user';
 import { getTokenForUser } from '../lib/utils/userToken';
 
 class AuthController extends BaseController {
+    constructor() {
+        super();
+        // pinning context, when used in routers 
+        this.signUp = this.signUp.bind(this);
+        this.signIn = this.signIn.bind(this);        
+    }
+
     signUp(req, res, next) {
         const { email, password } = req.body;
         // controller level validation

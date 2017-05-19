@@ -30,9 +30,9 @@ app.use(morgan('combined'));
 
 initializeDb(() => {
 	// api specs
-	app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+	app.use(apiConfig.specs, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 	// api router
-	app.use('/api', api());
+	app.use(apiConfig.prefix, api());
 
 	app.server.listen(apiConfig.port);
 

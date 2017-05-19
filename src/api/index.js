@@ -2,7 +2,7 @@ import { version } from '../../package.json';
 import { Router } from 'express';
 import { requireAuth } from '../middleware/passport';
 import auth from './auth';
-import facet from './facet';
+import facets from './facets';
 
 /**
  * API Resources
@@ -12,7 +12,7 @@ export default () => {
 	// auth
 	api.use('/auth', auth);
 	// resources
-	api.use('/facet', requireAuth, facet);
+	api.use('/facets', requireAuth, facets);
 	// No resource. Perhaps show API metadata
 	api.get('/', (req, res) => {
 		res.json({ version });
