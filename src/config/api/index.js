@@ -2,8 +2,8 @@ import api from './api.json';
 
 // API environment variables settings
 const {
-    SECRET_KEY,
-    PORT
+	SECRET_KEY,
+	PORT
 } = process.env;
 
 api.secretKey = SECRET_KEY || api.secretKey;

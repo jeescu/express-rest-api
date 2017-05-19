@@ -12,24 +12,24 @@ import LocalStrategy from 'passport-local';
  */
 
 const localOptions = {
-    usernameField: 'email'
+  usernameField: 'email'
 }
 
 const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
-    // verify this username and password
-    User.findOne({ email }, (error, user) => {
-        if (error) return done(error)
+  // verify this username and password
+  User.findOne({ email }, (error, user) => {
+    if (error) return done(error)
 
-        if (!user) return done(null, false);
+    if (!user) return done(null, false);
 
-        // Compare password
-        user.comparePassword(password, (error, isMatch) => {
-            if (error) return done(error);
-            if (!isMatch) return done(null, false);
+    // Compare password
+    user.comparePassword(password, (error, isMatch) => {
+      if (error) return done(error);
+      if (!isMatch) return done(null, false);
 
-            return done(null, user);
-        });
-    })
+      return done(null, user);
+    });
+  })
 });
 
 /**
@@ -39,18 +39,18 @@ const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
  */
 
 const jwtOptions = {
-    jwtFromRequest: ExtractJwt.fromHeader('authorization'),
-    secretOrKey: apiConfig.secretKey
+  jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+  secretOrKey: apiConfig.secretKey
 }
 
 const jwtLogin = new Strategy(jwtOptions, (payload, done) => {
-    // See if the user ID in the payload (sub) exists in the db
-    // if does call 'done' with user object
-    // otherwise call done without it
-    User.findById(payload.sub, (error, user) => {
-        if (error) done(error, false);
-        done(null, user || false);
-    })
+  // See if the user ID in the payload (sub) exists in the db
+  // if does call 'done' with user object
+  // otherwise call done without it
+  User.findById(payload.sub, (error, user) => {
+    if (error) done(error, false);
+    done(null, user || false);
+  })
 });
 
 // Use the strategies using passport

@@ -17,26 +17,26 @@ app.server = http.createServer(app);
 
 // 3rd party middleware
 app.use(cors({
-	exposedHeaders: apiConfig.corsHeaders
+  exposedHeaders: apiConfig.corsHeaders
 }));
 
 app.use(helmet());
 
 app.use(bodyParser.json({
-	limit: apiConfig.bodyLimit
+  limit: apiConfig.bodyLimit
 }));
 
 app.use(morgan('combined'));
 
 initializeDb(() => {
-	// api specs
-	app.use(apiConfig.specs, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-	// api router
-	app.use(apiConfig.prefix, api());
+  // api specs
+  app.use(apiConfig.specs, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  // api router
+  app.use(apiConfig.prefix, api());
 
-	app.server.listen(apiConfig.port);
+  app.server.listen(apiConfig.port);
 
-	logger.info(`Started on PORT ${app.server.address().port}...`);
+  logger.info(`Started on PORT ${app.server.address().port}...`);
 });
 
 export default app;

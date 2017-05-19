@@ -5,13 +5,13 @@
   * @param {string} [message='Success'] 
   * @returns response
   */
-export function formatResponseSuccess(response, data, message = 'Success', status=200) {
-    // define success response schema
-    const responseData = {
-        message,
-        data
-    }
-    return response.status(status).send(responseData);
+export function formatResponseSuccess(response, data, message = 'Success', status = 200) {
+  // define success response schema
+  const responseData = {
+    message,
+    data
+  }
+  return response.status(status).send(responseData);
 }
 
 /**
@@ -22,7 +22,7 @@ export function formatResponseSuccess(response, data, message = 'Success', statu
  * @returns response
  */
 export function formatResponseError(response, message, status = 422) {
-    // define error response schema
-    const responseData = { error: message }
-    return response.status(status).send(responseData)
+  // define error response schema
+  const responseData = { error: message }
+  return response.status(status).send(responseData)
 }

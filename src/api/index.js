@@ -8,15 +8,15 @@ import facets from './facets';
  * API Resources
  */
 export default () => {
-	let api = Router();
-	// auth
-	api.use('/auth', auth);
-	// resources
-	api.use('/facets', requireAuth, facets);
-	// No resource. Perhaps show API metadata
-	api.get('/', (req, res) => {
-		res.json({ version });
-	});
+  let api = Router();
+  // auth
+  api.use('/auth', auth);
+  // resources
+  api.use('/facets', requireAuth, facets);
+  // No resource. Perhaps show API metadata
+  api.get('/', (req, res) => {
+    res.json({ version });
+  });
 
-	return api;
+  return api;
 }

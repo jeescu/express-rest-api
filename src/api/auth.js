@@ -7,10 +7,10 @@ import { requireSignIn } from '../middleware/passport';
  * with controllers
  */
 const auth = () => {
-	let api = Router();
-	api.post('/signup', authController.signUp);
-	api.post('/signin', requireSignIn, authController.signIn);
-	return api;
+  let api = Router();
+  api.post('/signup', authController.signUp);
+  api.post('/signin', requireSignIn, authController.signIn);
+  return api;
 }
 
 export default auth();

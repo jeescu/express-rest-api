@@ -4,7 +4,7 @@ import prodConfig from './app.dev.json';
 let appConfig = devConfig;
 
 if (process.env.NODE_ENV === 'production') {
-    appConfig = prodConfig;
+  appConfig = prodConfig;
 }
 
 export default appConfig;
