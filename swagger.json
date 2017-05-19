@@ -8,6 +8,7 @@
   "produces": [
     "application/json"
   ],
+  "basePath": "/api",
   "paths": {
     "/auth/signup": {
       "post": {
@@ -85,7 +86,7 @@
         }
       }
     },
-    "/api/facets": {
+    "/facets": {
       "get": {
         "tags": [
           "Facets"
@@ -166,7 +167,7 @@
         }
       }
     },
-    "/api/facets/{facetId}": {
+    "/facets/{facetId}": {
       "get": {
         "tags": [
           "Facets"
