@@ -15,17 +15,11 @@ class FacetsApi extends APIResource {
 	}
 
 	extendResource() {
-		this.getSearch();
-	}
-	
-	// Example method for extending our resource by adding new url for search
-	getSearch() {
 		// facets/search/name
 		this.facetResource.get('/search/:keyword', (req, res) => {
 			res.send({ message: 'search' })
 		});
 	}
-
 	// then overrides super's resource() by the extended resource.
 	resource() {
 		return this.facetResource;

@@ -37,12 +37,12 @@ export default class APIResource {
         }
 
         // GET :id 
-        this.read = function ({[resourceId]: obj }, res) {
+        this.read = function ({ [resourceId]: obj }, res) {
             formatResponseSuccess(res, obj);
         }
 
         // PUT :id
-        this.update = function ({[resourceId]: obj, body }, res) {
+        this.update = function ({ [resourceId]: obj, body }, res) {
             obj.set(body);
             obj.save((error, updatedObj) => {
                 if (error) formatResponseError(res, error);
@@ -51,7 +51,7 @@ export default class APIResource {
         }
 
         // PATCH :id
-        this.patch = function ({[resourceId]: obj, body }, res) {
+        this.patch = function ({ [resourceId]: obj, body }, res) {
             obj.set(body)
             obj.save((error, obj) => {
                 if (error) formatResponseError(res, error);
@@ -60,7 +60,7 @@ export default class APIResource {
         }
 
         // DELETE :id
-        this.delete = function ({[resourceId]: obj }, res) {
+        this.delete = function ({ [resourceId]: obj }, res) {
             obj.remove((error) => {
                 if (error) formatResponseError(res, error);
                 res.sendStatus(204);

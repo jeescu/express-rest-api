@@ -5,7 +5,6 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import initializeDb from './db';
-import middleware from './middleware';
 import api from './api';
 import apiConfig from './config/api';
 import logger from './lib/utils/logger';
@@ -30,12 +29,8 @@ app.use(bodyParser.json({
 app.use(morgan('combined'));
 
 initializeDb(() => {
-	// api explorer
+	// api specs
 	app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-	// internal middleware
-	app.use(middleware());
-
 	// api router
 	app.use('/api', api());
 
