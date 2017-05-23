@@ -3,8 +3,7 @@ import authController from '../controllers/authController';
 import { requireSignIn } from '../middleware/passport';
 
 /**
- * Follow this format if you want to use api
- * with controllers
+ * Follow this format for normal routing
  */
 const auth = () => {
   let api = Router();

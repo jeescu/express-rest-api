@@ -13,7 +13,7 @@ export default class APIResource {
   constructor(resourceId, Model) {
     this.id = resourceId;
 
-    this.load = function (req, id, callback) {
+    this.load = (req, id, callback) => {
       Model.findById(id, (error, obj) => {
         if (error) callback(error);
         if (obj) callback(null, obj);
@@ -21,14 +21,14 @@ export default class APIResource {
     }
 
     // GET all
-    this.list = function ({ params }, res) {
+    this.list = ({ params }, res) => {
       Model.find({}, (error, obj) => {
         formatResponseSuccess(res, obj)
       })
     }
 
     // POST
-    this.create = function ({ body }, res) {
+    this.create = ({ body }, res) => {
       const obj = new Model(body);
       obj.save((error) => {
         if (error) formatResponseError(res, 'Invalid data');
@@ -37,12 +37,12 @@ export default class APIResource {
     }
 
     // GET :id 
-    this.read = function ({ [resourceId]: obj }, res) {
+    this.read = ({ [resourceId]: obj }, res) => {
       formatResponseSuccess(res, obj);
     }
 
     // PUT :id
-    this.update = function ({ [resourceId]: obj, body }, res) {
+    this.update = ({ [resourceId]: obj, body }, res) => {
       obj.set(body);
       obj.save((error, updatedObj) => {
         if (error) formatResponseError(res, error);
@@ -51,7 +51,7 @@ export default class APIResource {
     }
 
     // PATCH :id
-    this.patch = function ({ [resourceId]: obj, body }, res) {
+    this.patch = ({ [resourceId]: obj, body }, res) => {
       obj.set(body)
       obj.save((error, obj) => {
         if (error) formatResponseError(res, error);
@@ -60,15 +60,18 @@ export default class APIResource {
     }
 
     // DELETE :id
-    this.delete = function ({ [resourceId]: obj }, res) {
+    this.delete = ({ [resourceId]: obj }, res) => {
       obj.remove((error) => {
         if (error) formatResponseError(res, error);
         res.sendStatus(204);
       })
     }
+
+    // create resource router from this.
+    this.resourceApi = resource(this);
   }
 
   resource() {
-    return resource(this);
+    return this.resourceApi;
   }
 }

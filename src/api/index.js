@@ -13,7 +13,7 @@ export default () => {
   // auth
   api.use('/auth', auth);
   // resources
-  api.use('/facets', requireAuth, roleAuthorize(['user']), facets);
+  api.use('/facets', requireAuth, roleAuthorize(['admin', 'user']), facets);
   // No resource. Perhaps show API metadata
   api.get('/', (req, res) => {
     res.json({ version });
