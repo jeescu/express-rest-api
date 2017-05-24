@@ -1,3 +1,4 @@
+import { Router } from 'express';
 import resource from 'resource-router-middleware';
 import { formatResponseError, formatResponseSuccess } from '../lib/utils/response';
 // Check out resource https://github.com/developit/resource-router-middleware 
@@ -69,8 +70,22 @@ export default class APIResource {
 
     // create resource router from this.
     this.resourceApi = resource(this);
+    this.permissionRules = {};
   }
 
+  // authorized roles per method
+  // acts as a middleware of this resource
+  permissions() {
+    const perms = Router();
+    const methods = Object.keys(this.permissionRules);
+    methods.forEach((method) => {
+      perms[method]('*', this.permissionRules[method]);
+    });
+
+    return perms;
+  }
+
+  // api resource
   resource() {
     return this.resourceApi;
   }
